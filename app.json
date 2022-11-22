@@ -12,12 +12,11 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "platforms": ["android", "ios"],
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },

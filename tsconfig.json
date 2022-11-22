@@ -1,6 +1,120 @@
 {
-  "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
-  }
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": [
+      "es2017"
+    ],
+    "allowJs": true,
+    "jsx": "react-native",
+    "noEmit": true,
+    "isolatedModules": true,
+    "strict": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@app/features/*": [
+        "./src/features/*"
+      ],
+      "@app/features": [
+        "./src/features"
+      ],
+      "@app/components/*": [
+        "./src/components/*"
+      ],
+      "@app/common": [
+        "./src/components/Common"
+      ],
+      "@app/components": [
+        "./src/components"
+      ],
+      "@app/navigator/*": [
+        "./src/navigator/*"
+      ],
+      "@app/navigation": [
+        "./src/navigation/"
+      ],
+      "@app/screens/*": [
+        "./src/screens/*"
+      ],
+      "@app/screens": [
+        "./src/screens"
+      ],
+      "@app/services/*": [
+        "./src/services/*"
+      ],
+      "@app/services": [
+        "./src/services"
+      ],
+      "@app/styles/*": [
+        "./src/styles/*"
+      ],
+      "@app/styles": [
+        "./src/styles"
+      ],
+      "@app/lib/*": [
+        "./src/lib/*"
+      ],
+      "@app/lib": [
+        "./src/lib"
+      ],
+      "@app/config/*": [
+        "./src/config/*"
+      ],
+      "@app/config": [
+        "./src/config"
+      ],
+      "@app/theme": [
+        "./src/config/theme"
+      ],
+      "@app/assets/*": [
+        "./src/assets/*"
+      ],
+      "@app/assets": [
+        "./src/assets"
+      ],
+      "@app/store/*": [
+        "./src/store/*"
+      ],
+      "@app/store": [
+        "./src/store"
+      ],
+      "@app/api/*": [
+        "./src/api/*"
+      ],
+      "@app/api": [
+        "./src/api"
+      ],
+      "@app/hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@app/hooks": [
+        "./src/hooks"
+      ],
+      "@app/validators/*": [
+        "./src/validators/*"
+      ],
+      "@app/validators": [
+        "./src/validators"
+      ],
+      "@app/skeleton/*": [
+        "src/skeleton/*"
+      ],
+      "@app/skeleton": [
+        "src/skeleton"
+      ]
+    },
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ],
+  "extends": "expo/tsconfig.base"
 }
