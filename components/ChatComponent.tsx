@@ -4,16 +4,14 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from '../utils/styles';
 
-const ChatComponent = ({ item }: any) => {
+const ChatComponent = ({ item }) => {
   const navigation = useNavigation();
   const [messages, setMessages] = useState({});
 
-  //👇🏻 Retrieves the last message in the array from the item prop
   useLayoutEffect(() => {
     setMessages(item.messages[item.messages.length - 1]);
   }, []);
 
-  ///👇🏻 Navigates to the Messaging screen
   const handleNavigation = () => {
     navigation.navigate('Messaging', {
       id: item.id,

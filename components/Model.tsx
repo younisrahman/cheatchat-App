@@ -1,16 +1,14 @@
 import { View, Text, TextInput, Pressable } from 'react-native';
 import React, { useState } from 'react';
+import socket from '../utils/socket';
 import { styles } from '../utils/styles';
 
-const Modal = ({ setVisible }: any) => {
+const Modal = ({ setVisible }) => {
+  const closeModal = () => setVisible(false);
   const [groupName, setGroupName] = useState('');
 
-  //👇🏻 Function that closes the Modal component
-  const closeModal = () => setVisible(false);
-
-  //👇🏻 Logs the group name to the console
   const handleCreateRoom = () => {
-    console.log({ groupName });
+    socket.emit('createRoom', groupName);
     closeModal();
   };
   return (
@@ -21,7 +19,6 @@ const Modal = ({ setVisible }: any) => {
         placeholder='Group name'
         onChangeText={(value) => setGroupName(value)}
       />
-
       <View style={styles.modalbuttonContainer}>
         <Pressable style={styles.modalbutton} onPress={handleCreateRoom}>
           <Text style={styles.modaltext}>CREATE</Text>

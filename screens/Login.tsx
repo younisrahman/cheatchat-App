@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import {
   Text,
   SafeAreaView,
@@ -7,18 +7,14 @@ import {
   Pressable,
   Alert,
 } from 'react-native';
+import { styles } from '../utils/styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-//👇🏻 Import the app styles
-import { styles } from '../utils/styles';
-
-const Login = ({ navigation }: any) => {
+const Login = ({ navigation }) => {
   const [username, setUsername] = useState('');
 
   const storeUsername = async () => {
     try {
-      //👇🏻 async function - saves the username to AsyncStorage
-      //   redirecting to the Chat page
       await AsyncStorage.setItem('username', username);
       navigation.navigate('Chat');
     } catch (e) {
@@ -28,12 +24,26 @@ const Login = ({ navigation }: any) => {
 
   const handleSignIn = () => {
     if (username.trim()) {
-      //👇🏻 calls AsyncStorage function
       storeUsername();
     } else {
       Alert.alert('Username is required.');
     }
   };
+
+  useLayoutEffect(() => {
+    const getUsername = async () => {
+      try {
+        const value = await AsyncStorage.getItem('username');
+        if (value !== null) {
+          navigation.navigate('Chat');
+        }
+      } catch (e) {
+        console.error('Error while loading username!');
+      }
+    };
+    getUsername();
+  }, []);
+
   return (
     <SafeAreaView style={styles.loginscreen}>
       <View style={styles.loginscreen}>
@@ -58,3 +68,16 @@ const Login = ({ navigation }: any) => {
 };
 
 export default Login;
+
+// import { View, Text, SafeAreaView } from "react-native";
+// import React from "react";
+
+// const Login = () => {
+// 	return (
+// 		<SafeAreaView>
+// 			<Text>Hello World</Text>
+// 		</SafeAreaView>
+// 	);
+// };
+
+// export default Login;
