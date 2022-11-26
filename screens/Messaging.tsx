@@ -52,7 +52,12 @@ const Messaging = ({ route, navigation }) => {
   }, []);
 
   useEffect(() => {
-    socket.on('foundRoom', (roomChats) => setChatMessages(roomChats));
+    socket.on('foundRoom', (roomChats) => {
+      setChatMessages(roomChats);
+      console.log('roomChats====================================');
+      console.log(roomChats);
+      console.log('====================================');
+    });
   }, [socket]);
 
   return (

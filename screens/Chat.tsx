@@ -12,7 +12,7 @@ const Chat = () => {
 
   useLayoutEffect(() => {
     function fetchGroups() {
-      fetch('http:192.168.31.189:4000/api')
+      fetch('http://192.168.31.189:4000/api')
         .then((res) => res.json())
         .then((data) => {
           setRooms(data);
